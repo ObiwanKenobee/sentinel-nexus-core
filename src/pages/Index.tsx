@@ -73,112 +73,87 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="space-y-8">
       {/* Header */}
-      <header className="border-b border-border/50 backdrop-blur-sm bg-background/80 sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <Shield className="w-8 h-8 text-wakanda-purple animate-pulse-glow" />
-              <div>
-                <h1 className="text-2xl font-bold text-foreground glow-text">PANVAS Sentinel</h1>
-                <p className="text-sm text-muted-foreground">S.H.I.E.L.D. Command Center</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-wakanda-purple/20">
-                <Activity className="w-4 h-4 text-wakanda-purple" />
-                <span className="text-sm font-medium text-wakanda-purple">OPERATIONAL</span>
-              </div>
-              <button className="stark-button">
-                Deploy Mission
-              </button>
-            </div>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <Shield className="w-8 h-8 text-wakanda-purple animate-pulse-glow" />
+          <div>
+            <h1 className="text-3xl font-bold text-foreground glow-text">Command Center</h1>
+            <p className="text-muted-foreground">S.H.I.E.L.D. Global Operations Dashboard</p>
           </div>
         </div>
-      </header>
-
-      <main className="container mx-auto px-6 py-8 space-y-8">
-        {/* Threat Overview */}
-        <section>
-          <div className="flex items-center space-x-3 mb-6">
-            <TrendingUp className="w-6 h-6 text-stark-gold" />
-            <h2 className="text-2xl font-bold text-foreground glow-text">Global Threat Assessment</h2>
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-wakanda-purple/20">
+            <Activity className="w-4 h-4 text-wakanda-purple" />
+            <span className="text-sm font-medium text-wakanda-purple">OPERATIONAL</span>
           </div>
-          <ThreatOverview />
-        </section>
+          <button className="stark-button">
+            Deploy Mission
+          </button>
+        </div>
+      </div>
 
-        {/* Main Dashboard Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Outbreak Map */}
-          <div className="lg:col-span-2">
-            <OutbreakHeatmap />
-          </div>
+      {/* Threat Overview */}
+      <section>
+        <div className="flex items-center space-x-3 mb-6">
+          <TrendingUp className="w-6 h-6 text-stark-gold" />
+          <h2 className="text-2xl font-bold text-foreground glow-text">Global Threat Assessment</h2>
+        </div>
+        <ThreatOverview />
+      </section>
 
-          {/* Hero Agents */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-3">
-              <Users className="w-6 h-6 text-wakanda-purple" />
-              <h2 className="text-xl font-bold text-foreground glow-text">Field Agents</h2>
-            </div>
-            <div className="space-y-4">
-              {heroAgents.slice(0, 2).map((agent, index) => (
-                <HeroCard key={index} {...agent} />
-              ))}
-            </div>
-          </div>
+      {/* Main Dashboard Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Outbreak Map */}
+        <div className="lg:col-span-2">
+          <OutbreakHeatmap />
         </div>
 
-        {/* Active Missions */}
-        <section>
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center space-x-3">
-              <Shield className="w-6 h-6 text-stark-gold" />
-              <h2 className="text-2xl font-bold text-foreground glow-text">Citizen Missions</h2>
-            </div>
-            <button className="px-4 py-2 rounded-lg bg-wakanda-purple/20 text-wakanda-purple text-sm font-medium hover:bg-wakanda-purple/30 transition-colors">
-              View All Missions
-            </button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {activeMissions.map((mission, index) => (
-              <MissionCard key={index} {...mission} />
-            ))}
-          </div>
-        </section>
-
-        {/* Additional Hero Agents */}
-        <section>
-          <div className="flex items-center space-x-3 mb-6">
+        {/* Hero Agents */}
+        <div className="space-y-6">
+          <div className="flex items-center space-x-3">
             <Users className="w-6 h-6 text-wakanda-purple" />
-            <h2 className="text-2xl font-bold text-foreground glow-text">Extended Team Roster</h2>
+            <h2 className="text-xl font-bold text-foreground glow-text">Field Agents</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {heroAgents.map((agent, index) => (
+          <div className="space-y-4">
+            {heroAgents.slice(0, 2).map((agent, index) => (
               <HeroCard key={index} {...agent} />
             ))}
           </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-border/50 backdrop-blur-sm bg-background/80 mt-16">
-        <div className="container mx-auto px-6 py-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <Shield className="w-6 h-6 text-wakanda-purple" />
-              <p className="text-sm text-muted-foreground">
-                Built like S.H.I.E.L.D., powered like Wakanda, deployed like Iron Man.
-              </p>
-            </div>
-            <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-              <span>© 2024 PANVAS Sentinel</span>
-              <span>•</span>
-              <span className="text-wakanda-purple">Avengers Dashboard Core</span>
-            </div>
-          </div>
         </div>
-      </footer>
+      </div>
+
+      {/* Active Missions */}
+      <section>
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center space-x-3">
+            <Shield className="w-6 h-6 text-stark-gold" />
+            <h2 className="text-2xl font-bold text-foreground glow-text">Citizen Missions</h2>
+          </div>
+          <button className="px-4 py-2 rounded-lg bg-wakanda-purple/20 text-wakanda-purple text-sm font-medium hover:bg-wakanda-purple/30 transition-colors">
+            View All Missions
+          </button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {activeMissions.map((mission, index) => (
+            <MissionCard key={index} {...mission} />
+          ))}
+        </div>
+      </section>
+
+      {/* Additional Hero Agents */}
+      <section>
+        <div className="flex items-center space-x-3 mb-6">
+          <Users className="w-6 h-6 text-wakanda-purple" />
+          <h2 className="text-2xl font-bold text-foreground glow-text">Extended Team Roster</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {heroAgents.map((agent, index) => (
+            <HeroCard key={index} {...agent} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 };
